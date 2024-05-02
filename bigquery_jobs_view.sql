@@ -71,7 +71,7 @@ WITH
         IFNULL(
           SAFE_CAST(JSON_VALUE(metadataJson, "$.jobChange.job.jobStats.queryStats.outputRowCount") AS INT64),
            0) AS output_rows,
-        JSON_VALUE(metadataJson, "$.jobChange.job.jobStats.queryStats.referencedTables") AS referenced_tables,
+        JSON_VALUE_ARRAY(metadataJson, "$.jobChange.job.jobStats.queryStats.referencedTables") AS referenced_tables,
         IFNULL(
           SAFE_CAST(JSON_VALUE(metadataJson, "$.jobChange.job.jobStats.queryStats.totalBilledBytes") AS INT64),
          0) AS billed_bytes,
